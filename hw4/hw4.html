@@ -1,0 +1,114 @@
+<html>
+    <head>
+        <title> Homework 4 </title>
+        <style type="text/css">
+            #inputDiv {
+                margin-top: 100px;
+                padding: 0;
+                font-weight: 1000;
+                font-size: 18px;
+            }
+            input:focus {
+                border-color: rgb(56, 159, 194);
+            }
+            table {
+                width: 400px;
+            }
+            img {
+                height: 60px;
+                width: 60px;
+                border: 5px solid black;
+            }
+            #id {
+                font-weight: 900;
+            }
+        </style>
+        <script>
+            function loadJson(url) {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.open('GET', url, false)
+                xmlhttp.send()
+                
+                var jsonData = []
+                if (xmlhttp.status === 200)
+                    jsonDoc = xmlhttp.responseText;
+                else {
+                    alert('File: ' + url + ' is absent in the domain. Please enter a JSON URL that is valid')
+                }
+                return jsonDoc
+            }
+            function handleJson(jsonInputFile) {
+                var url = document.getElementById(jsonInputFile).value
+                if (!(/\S/.test(url))) {
+                    alert('Please enter a JSON file to parse')
+                    return;
+                }
+                jsonData = loadJson(url)
+                if (jsonData === "[]")
+                    return;
+                parseJson(jsonData)
+            }
+            function parseJson(jsonData) {
+                try {
+                    obj = JSON.parse(jsonData)
+                } catch (e) {
+                    alert('Enter a valid JSON - ' + e)
+                    return
+                }
+                var contents = obj.Mainline.Table.Row
+                if (contents === undefined || contents.length == 0) {
+                    alert('No car manufactures found (Empty Table). Please enter a JSON that has entries')
+                    return
+                }
+                var newWindow = window.open()
+                var html_text = "<html><body><table border='1'><tr>"
+
+                // Display the heading
+                var headingList = obj.Mainline.Table.Header.Data
+                for (var i = 0; i < headingList.length; i++)
+                    html_text += "<th>" + headingList[i] + "</th>"
+
+                html_text += "</tr>"
+
+                for (var i = 0; (contents !== undefined) && (i < contents.length); i++) {
+                    html_text += "<tr>"
+                    var companyInfo = contents[i]
+                    for (var key in companyInfo) {
+                        html_text += "<td>" 
+                        if (key === "Hubs") {
+                            html_text += "<ul>"
+                            if (companyInfo[key].Hub.length >= 1)
+                                html_text += "<li><b>" + companyInfo[key].Hub[0] + "</b></li>"
+                            for (var hubIterator = 1; hubIterator < companyInfo[key].Hub.length; hubIterator++) {
+                                html_text += "<li>" + companyInfo[key].Hub[hubIterator] + "</li>"
+                            }                                
+                        } else if (key === "HomePage") {
+                            html_text += "<a href = '" + companyInfo[key] + "'>" + companyInfo[key] + "</a>"
+                        } else if (key === "Logo") {
+                            html_text += "<img src='" + companyInfo[key] + "' style='height: 250px; width: 250px;'></img>"
+                        } else {
+                            html_text += companyInfo[key]
+                        }
+                        companyInfo[key] 
+                        html_text += "</td>"
+                    }
+                    html_text += "</tr>"
+                }
+                html_text += "</table></body></html>"
+                newWindow.document.write(html_text)
+            }
+        </script>
+    </head>
+    <body>
+        <br><br>
+        <center>
+            <div id="inputDiv">
+                <b id="title"> Enter URL for largest manufacturers by production (2017) List JSON File </b>
+                <br><br>
+                <input type="text" id="jsonInputFile"> </input>
+                <br><br>
+                <button type="button" onclick="handleJson('jsonInputFile')">Submit Query</button>
+            </div>
+        </center>
+    </body>
+</html>

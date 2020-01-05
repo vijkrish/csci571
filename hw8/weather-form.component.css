@@ -1,0 +1,204 @@
+#weatherBox {
+    max-width: 60%;   
+    background-color: #6D91A9;
+    color: white;
+    border-radius: 1vh;
+    box-shadow: 5px 5px rgb(173, 169, 169);
+}
+
+@media all and (max-width: 600px) {
+    #weatherBox {
+        max-width: 95%;
+    }
+    #exampleFormControlInput1 {
+        max-width: 100%;
+    }
+    #exampleFormControlSelect2 {
+        max-width: 100%;
+    }
+    .clickBox {
+        margin-left: 2%;
+    }
+    .cardLogos {
+        margin-bottom: 0vh;
+        height: 30px;
+        width: 30px;
+        text-align: left;
+    }
+    .weatherCard {
+        width: 95%;
+        font-size: 20px;
+        padding-left: 0px;
+    }
+    #dailyModal {
+        width: 90%;
+    }
+    #tabGap {
+        width: 30px;
+    }
+
+    #citygroup {
+        margin-left: 0;
+        padding: 0 0;
+    }
+    #cityTitle {
+        font-size: 20px;
+    }
+    #timezoneTitle {
+        font-size: 20px;
+    }
+    #stateSeal {
+        max-height: 140px;
+        max-width: 140px;
+    }
+    #rowgroup {
+        margin-left: 0;
+    }   
+
+}
+
+#rowgroup {
+    padding-left: 15px;
+}
+
+#dailyModal {
+    width: 30%;
+}
+#modalImage {
+    width: 70px;
+    height: 70px;
+    margin: auto auto;
+    margin-top: 30px;
+}
+#weatherSearchTitle {
+    padding-top: 50px;
+}
+#exampleFormControlInput1 {
+    max-width: 100%;
+
+}
+#exampleFormControlSelect2 {
+    max-width: 40%;
+}
+.clickBox {
+    height: 30px;
+    width: 100px;
+    background-color:white;
+    vertical-align: middle;
+}
+
+.clickBox[disabled] {
+    background-color:	#C6D0DA;
+}
+
+#buttons {
+    margin-bottom: 12vh;
+}
+button {
+    border: 1px solid black;
+}
+.errorPrint{
+    color: red;
+    font-weight: bold;
+    text-align: left;
+}
+#tabSpace {
+    width: 70%;
+    margin: auto auto;
+}
+
+#currentTab, #hourlyTab, #weeklyTab {
+    padding-top: 20px;
+}
+
+#chartContainer {
+    padding-top: 20px;
+}
+
+#tabGap {
+    width: 65%;
+    max-width: 65%;
+}
+.weatherCard {
+    width: 100%;
+    margin: 0 0;
+    background-color: #A5D1EE;
+    border-radius: 8px;
+    border: 1px solid black;
+    padding: 0 0;
+}
+
+#stateSeal {
+    max-height: 80%;
+    max-width: 80%;
+}
+
+#smallStateSeal {
+    height: 10px;
+    max-width: 10px;
+}
+
+#tempTitle {
+    margin-top: 4vh;
+}
+
+#summaryTitle {
+    margin-top: 4vh;
+}
+
+@media only screen and (max-width: 600px) {
+    #tabSpace {
+        width: 95%;
+        margin: 0 0;
+        margin-left: 20px;
+    }
+}
+
+.weatherCard {
+    padding-left: 5vh;
+    padding-top: 5vh;
+    font-size: 5vh;
+}
+
+#timezoneTitle {
+    color: rgb(87, 85, 85);
+}
+
+#summaryTitle {
+    font-size: 3vh;
+}
+
+.cardLogos {
+    height: 5vh;
+    width: 5vh;
+    margin-bottom: -6vh;
+    text-align: left;
+}
+
+.cardLogoVal {
+    font-size: 3vh;
+}
+
+#selectHourlyOption {
+    width: 30%;
+}
+
+.favCity {
+    fill: orange;
+}
+.notFavCity {
+    fill: white;
+}
+
+
+#favTable {
+    width: 80%;
+    margin: auto auto;
+    text-align: center;
+}
+
+#favTable tr {
+    height: 40px;
+    background-color: #6593AD;
+}
+
